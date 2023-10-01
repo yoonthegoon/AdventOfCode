@@ -16,17 +16,21 @@ The structure is as shows below:
 `.
 ├── 2022
 │   ├── day01
+│   │   ├── main.pl
 │   │   └── README.md
 │   ├── day02
+│   │   ├── main.pl
 │   │   └── README.md
 │   └── ...
 ├── 2023
 │   ├── day01
+│   │   ├── main.pl
 │   │   └── README.md
 │   ├── day02
+│   │   ├── main.pl
 │   │   └── README.md
 │   └── ...
-└── ...
+└── ..,
 ```
 
 Inside each day's folder, there will be a main.pl file with solutions to parts
