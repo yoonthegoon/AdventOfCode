@@ -30,7 +30,7 @@ The structure is as shows below:
 │   │   ├── main.pl
 │   │   └── README.md
 │   └── ...
-└── ..,
+└── ...
 ```
 
 Inside each day's folder, there will be a main.pl file with solutions to parts
