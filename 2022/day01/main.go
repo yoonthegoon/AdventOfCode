@@ -16,8 +16,8 @@ func part1(input []string) {
     total := 0
     maxTotal := 0
     for _, line := range input {
-        c, err := strconv.Atoi(string(line))
-        if c == 0 || err != nil {
+        c, _ := strconv.Atoi(line)
+        if c == 0 {
             if total > maxTotal {
                 maxTotal = total
             }
