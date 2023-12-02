@@ -1,7 +1,7 @@
 import re
 
 
-with open("input.txt") as f:
+with open('input.txt') as f:
     calibration_document = f.read().splitlines()
 
 

@@ -23,7 +23,7 @@ I also import the `re` module to help me find the digits in each line.
 ```python
 import re
 
-with open("input.txt") as f:
+with open('input.txt') as f:
     calibration_document = f.read().splitlines()
 ```
 

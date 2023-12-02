@@ -1,4 +1,5 @@
 import re
+from math import prod
 
 
 with open('input.txt') as f:
@@ -6,14 +7,13 @@ with open('input.txt') as f:
 
 
 def part1():
+    colors = {'red': 12, 'green': 13, 'blue': 14}
     id_sum = 0
     for game in games:
         game_id = int(re.search(r'(?<=Game )\d+(?=:)', game).group())
         for game_set in game.split(';'):
-            reds = map(int, re.findall(r'\d+(?= red)', game_set))
-            greens = map(int, re.findall(r'\d+(?= green)', game_set))
-            blues = map(int, re.findall(r'\d+(?= blue)', game_set))
-            if sum(reds) > 12 or sum(greens) > 13 or sum(blues) > 14:
+            cubes = {color: map(int, re.findall(rf'\d+(?= {color})', game_set)) for color in colors}
+            if any(sum(cubes[color]) > colors[color] for color in colors):
                 break
         else:
             id_sum += game_id
@@ -24,16 +24,13 @@ def part1():
 def part2():
     power_sum = 0
     for game in games:
-        max_red, max_green, max_blue = (0,) * 3
+        maxes = {'red': 0, 'green': 0, 'blue': 0}
         for game_set in game.split(';'):
-            reds = map(int, re.findall(r'\d+(?= red)', game_set))
-            greens = map(int, re.findall(r'\d+(?= green)', game_set))
-            blues = map(int, re.findall(r'\d+(?= blue)', game_set))
-            max_red = max(max_red, sum(reds))
-            max_green = max(max_green, sum(greens))
-            max_blue = max(max_blue, sum(blues))
+            cubes = {color: map(int, re.findall(rf'\d+(?= {color})', game_set)) for color in maxes}
+            for color in maxes:
+                maxes[color] = max(maxes[color], sum(cubes[color]))
 
-        power_sum += max_red * max_green * max_blue
+        power_sum += prod(maxes.values())
 
     print(power_sum)
 
